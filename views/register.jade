@@ -1,0 +1,17 @@
+- if (typeof(id) !== 'undefined')
+	h3 Thank you! You just registered id #{id}.
+	br
+
+h3 Register Dataset
+br 	
+form(method="POST", enctype="multipart/form-data", action="/register")
+	label(for="name") Name: 
+	br
+	input(type="textbox", name="name", value="name") 
+	br
+	label(for="parts") Parts: 
+	br
+	input(type="texbox", name="parts", size=3)
+	br
+	br
+	input(type="submit", name="submit", value="Register")

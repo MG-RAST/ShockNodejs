@@ -1,0 +1,8 @@
+table
+	tr 
+		th(style='padding: 0px 5px') key
+		th(style='padding: 0px 5px') value
+	- for (var k in meta)
+		tr 
+			td(style='padding: 0px 5px')= k
+			td(style='padding: 0px 5px')= meta[k]  

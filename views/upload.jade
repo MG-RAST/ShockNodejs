@@ -1,0 +1,14 @@
+-if (typeof(status) !== 'undefined' && status == 'success')
+	h3 File recieved!
+	br
+-else if (typeof(part) !== 'undefined')
+	form(method="POST", enctype="multipart/form-data", action="/put/partial")
+		input(type="file", name="upload", multiple="multiple")
+		input(type="hidden", name="id", value=id)
+		input(type="hidden", name="part", value=part)
+		input(type="submit", value="Upload")
+-else 
+	form(method="POST", enctype="multipart/form-data", action="/put")
+		input(type="file", name="upload", multiple="multiple")
+		input(type="hidden", name="id", value=id)
+		input(type="submit", name="submit", value="Upload")

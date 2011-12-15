@@ -1,47 +1,67 @@
 (function() {
-  var handler, osdfServer, server, shockHandler;
-  osdfServer = require('./lib/osdfServer.js');
-  shockHandler = require('./lib/shockHandlers.js');
-  server = new osdfServer.Server();
-  handler = new shockHandler.Handler(server);
+  var Routes, Server, Shock, cluster, routes, server, shock;
+
+  cluster = require('cluster');
+
+  Server = require('./lib/Server');
+
+  Routes = require('./lib/Routes');
+
+  Shock = require('./lib/Shock');
+
+  /*
+  processes = 2
+  if cluster.isMaster
+  	for [1..processes]
+  		cluster.fork()
+  	
+  	cluster.on 'death', (worker)->
+  	    console.log "worker #{worker.pid} died"
+  else
+  */
+
+  server = new Server();
+
+  shock = new Shock(server);
+
+  routes = new Routes(server, shock);
+
   server.get('/', function(req, res) {
-    return handler.status(req, res);
+    return routes.index(req, res);
   });
+
+  server.get('/paginate', function(req, res) {
+    return routes.browse(req, res);
+  });
+
+  server.get('/node/:id', function(req, res) {
+    return routes.get(req, res);
+  });
+
+  server.put('/node/:id', function(req, res) {
+    return routes.put(req, res);
+  });
+
+  server.post('/node/:id', function(req, res) {
+    return routes.post(req, res);
+  });
+
+  server["delete"]('/node/:id', function(req, res) {
+    return routes.del(req, res);
+  });
+
+  server.get('/indexes', function(req, res) {
+    return routes.indexes(req, res);
+  });
+
   server.get('/register', function(req, res) {
-    return handler.register('get', req, res);
+    return routes.register(req, res);
   });
+
   server.post('/register', function(req, res) {
-    return handler.register('post', req, res);
+    return routes.register(req, res);
   });
-  server.get('/info/:id', function(req, res) {
-    return handler.info(req, res);
-  });
-  server.get('/put/:id/part/:part', function(req, res) {
-    return handler.put(req, res, 'get');
-  });
-  server.get('/put/:id', function(req, res) {
-    return handler.put(req, res, 'get');
-  });
-  server.post('/put/:id/part/:part', function(req, res) {
-    return handler.put(req, res, 'post');
-  });
-  server.post('/put/partial', function(req, res) {
-    return handler.put(req, res, 'post');
-  });
-  server.post('/put', function(req, res) {
-    return handler.put(req, res, 'post');
-  });
-  server.get('/get/:id', function(req, res) {
-    return handler.getComplete(req, res);
-  });
-  server.get('/get/:id/:index/:start', function(req, res) {
-    return handler.getChunk(req, res);
-  });
-  server.get('/del/:id', function(req, res) {
-    return handler.del(req, res);
-  });
-  server.get('/query', function(req, res) {
-    return handler.query(req, res);
-  });
+
   server.start();
+
 }).call(this);

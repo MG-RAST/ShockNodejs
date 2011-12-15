@@ -3,18 +3,31 @@
 - else	
 	h3 Welcome to Shock.
 br
--if (typeof(columns) !== 'undefined' && typeof(rows) !== 'undefined')	
+	
+-if (typeof(columns) !== 'undefined')	
 	table(id='items')
 		thead
 			tr
 				- each c in columns
 					th= c
-		tbody
-			- each row in rows
-				tr
-					- each item in row
-						td(style="width:160px;")= item
-		:javascript
-			| $(document).ready(function() {
-			|	$('#items').dataTable( {"bJQueryUI": true,	"sPaginationType": "full_numbers"} );
-			| } );
+		tbody(style='width: 960px;')
+
+	script
+		$(document).ready(function() {
+			$('#items').dataTable( {
+				"bJQueryUI": true,
+				"sPaginationType": "full_numbers",
+				"bSort": false,
+				"bFilter": false,
+				"bProcessing": true, 
+				"bServerSide": true,
+				"sAjaxSource": "paginate",
+				"fnServerData": function ( sSource, aoData, fnCallback ) {
+					$.getJSON( sSource, aoData, function (json) {
+						console.log(json);
+						fnCallback(json)
+					} );
+				}
+			} );
+			prettyPrint();
+		} );

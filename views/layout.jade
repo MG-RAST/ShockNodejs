@@ -1,19 +1,20 @@
 !!! 5
 html(lang="en")
-  head
-	meta(charset='utf-8')
-    title= pageTitle
-	link(href='/css/shock.css', rel='stylesheet')
-	link(href='/css/demo_table_jui.css', rel='stylesheet')
-	link(href='/css/jquery-ui-1.8.4.custom.css', rel='stylesheet')
-	script(src="/js/jquery.js")	
-	script(src="/js/jquery.dataTables.js")
-  body
-	#container
-		header
-			a(href='/')
-				img(src='/images/shock_logo.png', style='width:600px; margin-top: 25px;')
-    
+	head
+		meta(charset='utf-8')
+		title= pageTitle
+		link(href='/css/shock.css', rel='stylesheet')
+		link(href='/css/demo_table_jui.css', rel='stylesheet')
+		link(href='/css/jquery-ui-1.8.4.custom.css', rel='stylesheet')
+		script(src="/js/jquery.js")	
+		script(src="/js/jquery.dataTables.js")
+		link(href='/css/prettify.css', rel='stylesheet')
+		script(src="/js/prettify.js")	
+	body
+		#container
+			header
+				a(href='/')
+					img(src='/images/shock_logo.png', style='width:600px; margin-top: 25px;')
+
 		#main!= body
-	
 		footer

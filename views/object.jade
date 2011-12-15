@@ -1,0 +1,10 @@
+- if (typeof(id) !== 'undefined')
+	h1 #{id}
+br
+pre(class="prettyprint", style="border: 1px solid black;")
+	#{object}
+	
+script
+	$(document).ready(function() {
+		prettyPrint()
+	})

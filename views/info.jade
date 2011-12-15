@@ -1,0 +1,26 @@
+h1 info/#{id}
+br
+h1 parts
+pre(class="prettyprint")
+	#{parts}
+
+br
+h1 metadata 
+-if (typeof(metadataColumns) !== 'undefined' && typeof(metadataRows) !== 'undefined')	
+	table(id='metadata')
+		thead
+			tr
+				- each c in metadataColumns
+					th= c
+		tbody
+			- each row in metadataRows
+				tr
+					- each item in row
+						td(style="width:480px;")= item
+
+script
+	$(document).ready(function() {
+		$('#files').dataTable( {"bJQueryUI": true,	"sPaginationType": "full_numbers"} );
+		$('#metadata').dataTable( {"bJQueryUI": true,	"sPaginationType": "full_numbers"} );
+		prettyPrint();
+	} );

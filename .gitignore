@@ -9,5 +9,8 @@ common/**/*
 *\~*
 
 # ignore *.coffee & lib/*.coffee
-*.coffee
-lib/*.coffee
+*.js
+lib/*.js
+
+# local install node modules
+node_modules

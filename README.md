@@ -34,7 +34,7 @@ arbitrary json
 #### acl
 access control (in development)
 
-Node example:
+#### node example:
 
 	{
 	    "id": 6775,

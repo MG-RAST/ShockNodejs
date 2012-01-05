@@ -61,41 +61,48 @@ Node example:
 	}
 
 ### Create node:
+POST /node (multipart/form-data encoded)
+
+  - to set attributes include file field named "attributes" containing a json file of attributes
+  - to set file include file field named "file" containing any file
+
+#### example
 	
 	curl -X POST [ -F "attributes=@<path_to_json>" -F "file=@<path_to_data_file>" ] <shock_url>[:<port>]/node
 	
-returns:
+#### returns
 
-	{}
+	<new_node>
+
 
 ### List nodes:
-
 GET /node
 
-  - by adding ?offset=N you get the nodes starting at N+1
-  - by adding ?count=N you get a maximum of N nodes returned
+  - by adding ?offset=N you get the nodes starting at N+1 (in development)
+  - by adding ?count=N you get a maximum of N nodes returned (in development)
 
 #### example
 	
 	curl -X GET <shock_url>[:<port>]/node/[?offset=<offset>&count=<count>]
 		
-returns:
+#### returns
 
 	{"total_nodes":42,"offset":0,"count":4,"nodes":[<node_1>, <node_2>, <node_3>, <node_4>]}
+
 	
 ### Get node:
+GET /node/<nodeid>
 	
+	- ?download - complete file download
+	- ?download&index=$index&part=$part - file part download (in development)
+	- ?list&indexes - list available indexes (in development)
+ 	- ?list&index=$index - index parts list	(in development)
+	
+#### example	
+
 	curl -X GET <shock_url>[:<port>]/node/<nodeid>
 	
-returns:
+#### returns
 
 	{}
-	
-### Get node file:
-
-	curl -X GET <shock_url>[:<port>]/node/<nodeid>/?download
-
-returns:
-
-	{}	
 

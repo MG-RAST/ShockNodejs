@@ -3,7 +3,7 @@ Shock
 
 ### To build:
 
-Unix/Macintosh (requires nodejs, postgresql >= 8.4):
+Unix/Macintosh (requires nodejs, npm, postgresql >= 8.4):
 
     ./bootstrap -d <shock_data_dir> -p <shock_site_port> -N <dbname> -H <dbhost> -U <dbuser> [ -P <dbpasswd> -h <help> ]
 
@@ -60,7 +60,7 @@ Node example:
 	    }
 	}
 
-### create node:
+### Create node:
 	
 	curl -X POST [ -F "attributes=@<path_to_json>" -F "file=@<path_to_data_file>" ] <shock_url>[:<port>]/node
 	
@@ -68,7 +68,14 @@ returns:
 
 	{}
 
-### list all nodes:
+### List nodes:
+
+GET /node
+
+  - by adding ?offset=N you get the nodes starting at N+1
+  - by adding ?count=N you get a maximum of N nodes returned
+
+#### example
 	
 	curl -X GET <shock_url>[:<port>]/node/[?offset=<offset>&count=<count>]
 		
@@ -76,7 +83,7 @@ returns:
 
 	{"total_nodes":42,"offset":0,"count":4,"nodes":[<node_1>, <node_2>, <node_3>, <node_4>]}
 	
-### get node:
+### Get node:
 	
 	curl -X GET <shock_url>[:<port>]/node/<nodeid>
 	
@@ -84,7 +91,7 @@ returns:
 
 	{}
 	
-### get node file:
+### Get node file:
 
 	curl -X GET <shock_url>[:<port>]/node/<nodeid>/?download
 

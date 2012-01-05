@@ -63,8 +63,8 @@ Node example:
 ### Create node:
 POST /node (multipart/form-data encoded)
 
-  - to set attributes include file field named "attributes" containing a json file of attributes
-  - to set file include file field named "file" containing any file
+ - to set attributes include file field named "attributes" containing a json file of attributes
+ - to set file include file field named "file" containing any file
 
 #### example
 	
@@ -78,8 +78,8 @@ POST /node (multipart/form-data encoded)
 ### List nodes:
 GET /node
 
-  - by adding ?offset=N you get the nodes starting at N+1 (in development)
-  - by adding ?count=N you get a maximum of N nodes returned (in development)
+ - by adding ?offset=N you get the nodes starting at N+1 (in development)
+ - by adding ?count=N you get a maximum of N nodes returned (in development)
 
 #### example
 	
@@ -93,10 +93,10 @@ GET /node
 ### Get node:
 GET /node/<nodeid>
 	
-	- ?download - complete file download
-	- ?download&index=$index&part=$part - file part download (in development)
-	- ?list&indexes - list available indexes (in development)
- 	- ?list&index=$index - index parts list	(in development)
+ - ?download - complete file download
+ - ?download&index=$index&part=$part - file part download (in development)
+ - ?list&indexes - list available indexes (in development)
+ - ?list&index=$index - index parts list	(in development)
 	
 #### example	
 

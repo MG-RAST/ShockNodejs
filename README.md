@@ -16,25 +16,26 @@ API
 
 ### Node:
 
-# id
+#### id
 unique identifier
 
-# file_name 
+#### file_name 
 file name for attached file if present
 
-# size
+#### size
 file size for attached file if present
 
-# checksum
+#### checksum
 file checksum for attached file if present
 
-# attributes
+#### attributes
 arbitrary json
 
-# acl
+#### acl
 access control (in development)
 
 Node example:
+
 	{
 	    "id": 6775,
 	    "file_name": "h_sapiens_asm.tar.gz",

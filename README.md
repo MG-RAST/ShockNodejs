@@ -1,5 +1,5 @@
 Shock 
-===
+==
 
 ### To build:
 
@@ -12,9 +12,9 @@ Windows:
 	untested (theoretically possible)
 
 API
----
+--
 
-### Node:
+## Node
 
 #### id
 unique identifier
@@ -60,6 +60,8 @@ Node example:
 	    }
 	}
 
+## Actions
+
 ### Create node:
 POST /node (multipart/form-data encoded)
 
@@ -74,7 +76,7 @@ POST /node (multipart/form-data encoded)
 
 	<new_node>
 
-
+<br/>
 ### List nodes:
 GET /node
 
@@ -104,5 +106,5 @@ GET /node/<nodeid>
 	
 #### returns
 
-	{}
+	<node>
 

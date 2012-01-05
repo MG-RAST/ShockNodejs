@@ -34,6 +34,7 @@ routes = new Routes(server, shock)
 # routes definition
 server.get '/',         (req, res)-> routes.index req, res
 server.get '/paginate', (req, res)-> routes.browse req, res
+server.get '/node',     (req, res)-> routes.get req,res
 server.get '/node/:id', (req, res)-> routes.get req,res
 # /?download - complete file download
 # /?download&index=$index&part=$part - file part download
